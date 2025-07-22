@@ -39,7 +39,7 @@ DB_USERNAME=postgres
 DB_PASSWORD=secret
 ```
 
-6 - Execute as migration para criar o banco de dados e suas tabelas: 
+6 - Execute as ```migration``` para criar o banco de dados e suas tabelas: 
 ```
 docker-compose exec app php artisan migrate
 ```
@@ -49,25 +49,26 @@ docker-compose exec app php artisan migrate
 http://localhost:5050
 ```
 
-Você vai ver:
+8 - Use as seguintes credenciais para fazer login e depois clique no botão ```Login```:
 
-(Foto)
+```
+email: admin@admin.com
+password: admin
+```
 
-8 - Use as seguintes credenciais para fazer login e clique no botão ```Login```:
-
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/01.png)
 
 9 - Após realizar o login, o dashboard estará disponível:
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/02.png)
 
 10 - Crie um servidor: ```Servers -> Register -> Server```.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/03.png)
 
 11 - Na aba ```General``` no campo ```Name```, você pode escolher qualquer nome para seu servidor (exceto ```localhost```), no meu exemplo vou usar ```test-postgres```.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/04.png)
 
 12 - Na aba ```Connection```, você precisa inserir os seguintes valores:
 - Host name/address: ```pgsql```
@@ -78,31 +79,35 @@ Você vai ver:
 
 Finalmente, clique no botão ```Save```.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/05.png)
 
 13 - O servidor ```test-postgres``` foi criado.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/06.png)
 
 14 - Verifique o banco de dados criado: ```test-postgres -> Databases -> dados-abertos-test```.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/07.png)
 
 15 - Verifique a tabela ```deputados```: ```dados-abertos-test -> Schemas -> public -> Tables -> deputados```.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/08.png)
 
-16 - A tabela ```deputados``` vai estar vazia: ```deputados -> View/Edit Data -> All Rows```.
+16 - Verifique a quantidade de registros da tabela ```deputados```: ```deputados -> View/Edit Data -> All Rows```.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/09.png)
 
-17 - Verifique a tabela ```despesas```: ```dados-abertos-test -> Schemas -> public -> Tables -> despesas```.
+17 - A tabela ```deputados```está vazia.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/10.png)
 
-18 - A tabela ```despesas``` vai estar vazia: ```despesas -> View/Edit Data -> All Rows```.
+18 - Verifique a quantidade de registros da tabela ```despesas```: ```despesas -> View/Edit Data -> All Rows```.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/11.png)
+
+19 - A tabela ```despesas```está vazia.
+
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/12.png)
 
 ## Execução dos Jobs
 
@@ -114,7 +119,7 @@ docker compose exec app php artisan queue:work
 
 02 - Agora o processo de Jobs está em andamento, sendo possível realizar a inserção de dados no PostgreSQL de registros de uma API online.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/13.png)
 
 03 - Insira o endereço abaixo no navegador ou alguma API Plataform para iniciar o processo de inserção de dados:
 
@@ -124,27 +129,27 @@ http://localhost:8000/iniciar-importacao
 
 04 - Com isso você pode ver a seguinte mensagem:
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/14.png)
 
 05 - Agora você pode ver que está sendo executada a Jobs pelo terminal.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/15.png)
 
 06 - No arquivo ```laravel.log``` você vai notar a inserção dos deputados na tabela ```deputados``` e as despesas feitas na tabela ```despesas```.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/16.png)
 
 07 - O processo pode demorar, aguarde até finalizar.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/17.png)
 
 08 - Perceba que a tabela ```deputados``` agora tem registros.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/18.png)
 
-09 - E a tabela ```despesas```tem registros.
+09 - E a tabela ```despesas``` também há registros.
 
-(Foto)
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/19.png)
 
 ## Execução de REST API
 
