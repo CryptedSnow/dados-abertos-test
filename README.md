@@ -117,7 +117,7 @@ Finalmente, clique no botão ```Save```.
 docker compose exec app php artisan queue:work
 ```
 
-02 - Agora o processo de Jobs está em andamento, sendo possível realizar a inserção de dados no PostgreSQL de registros de uma API online.
+02 - Agora o processo de Jobs está em andamento, sendo possível realizar a inserção de dados no PostgreSQL de registros da API online chamada [Dados Abertos](https://dadosabertos.camara.leg.br/swagger/api.html).
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/13.png)
 
@@ -152,6 +152,10 @@ http://localhost:8000/iniciar-importacao
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/19.png)
 
 ## Execução de REST API
+
+Se você tem seguido as instruções acima, você precisa de alguma API Plataform para executar os endpoints, você pode usar o [POSTMAN](https://www.postman.com/) por exemplo. É necessário instalar o Postman em sua máquina local para testes locais.
+
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/20.png)
 
 Você precisa seguir com a atenção para executar os endpoints:
 
