@@ -22,8 +22,6 @@ class DespesaResource extends JsonResource
             'fornecedor'       => $this->fornecedor,
             'url_documento' => $this->url_documento,
             'data_documento' => optional($this->data_documento)->format('d-m-Y'),
-            'created_at' => optional($this->created_at)->timezone('America/Sao_Paulo')->format('d-m-Y H:i:s'),
-            'updated_at' => optional($this->updated_at)->timezone('America/Sao_Paulo')->format('d-m-Y H:i:s'),
         ];
     }
 }

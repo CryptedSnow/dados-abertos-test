@@ -20,8 +20,6 @@ class DeputadoResource extends JsonResource
             'nome'       => $this->nome,
             'partido'      => $this->partido,
             'uf'       => $this->uf,
-            'created_at' => optional($this->created_at)->timezone('America/Sao_Paulo')->format('d-m-Y H:i:s'),
-            'updated_at' => optional($this->updated_at)->timezone('America/Sao_Paulo')->format('d-m-Y H:i:s'),
         ];
     }
 }
