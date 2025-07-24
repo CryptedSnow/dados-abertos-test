@@ -169,7 +169,7 @@ Você precisa seguir com a atenção para executar os endpoints:
     "data": [
         {
             "id": 1,
-            "camera_id": null,
+            "camara_id": 204379,
             "nome": "Acácio Favacho",
             "partido": "MDB",
             "uf": "AP"
@@ -177,7 +177,7 @@ Você precisa seguir com a atenção para executar os endpoints:
         ...
         {
             "id": 511,
-            "camera_id": null,
+            "camara_id": 220552,
             "nome": "Zucco",
             "partido": "PL",
             "uf": "RS"
@@ -196,7 +196,7 @@ Você precisa seguir com a atenção para executar os endpoints:
     "data": [
         {
             "id": 484,
-            "camera_id": null,
+            "camara_id": 160976,
             "nome": "Tiririca",
             "partido": "PL",
             "uf": "SP"

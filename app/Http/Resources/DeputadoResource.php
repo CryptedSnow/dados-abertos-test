@@ -16,10 +16,10 @@ class DeputadoResource extends JsonResource
     {
         return [
             'id'         => $this->id,
-            'camera_id'  => $this->camera_id,
+            'camara_id'  => $this->camara_id,
             'nome'       => $this->nome,
-            'partido'      => $this->partido,
-            'uf'       => $this->uf,
+            'partido'    => $this->partido,
+            'uf'         => $this->uf,
         ];
     }
 }
