@@ -28,7 +28,7 @@ services:
         networks:
             - app-network
     pgsql:
-        image: 'postgres:17'
+        image: 'postgres:latest'
         container_name: pgsql
         ports:
             - '5432:5432'
