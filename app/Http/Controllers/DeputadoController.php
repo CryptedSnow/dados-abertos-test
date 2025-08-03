@@ -29,28 +29,6 @@ class DeputadoController extends Controller
         return DeputadoResource::collection($deputados);
     }
 
-    public function buscarDeputado(Request $request)
-    {
-        $nome = $request->input('nome');
-        if (!$nome) {
-            return response()->json(['message' => "O nome do(a) deputado(a) está vazio."], 404);
-        }
-        $deputados = Deputado::where('nome', 'ILIKE', '%' . $nome . '%')->get();
-        if ($deputados->isEmpty()) {
-            return response()->json(['message' => "Deputado(a) $nome não foi encontrado(a)."], 404);
-        }
-        return DeputadoResource::collection($deputados);
-    }
-
-    public function listarDespesas()
-    {
-        $despesas = Despesa::paginate(100);
-        if ($despesas->isEmpty()) {
-            return response()->json(['message' => 'Despesas não encontradas.'], 404);
-        }
-        return DespesaResource::collection($despesas);
-    }
-
     public function buscarDespesasDeputado(Request $request)
     {
         $nome = $request->input('nome');

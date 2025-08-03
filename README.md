@@ -157,9 +157,9 @@ Se você tem seguido as instruções acima, você precisa de alguma API Platafor
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/20.png)
 
-Você precisa seguir com a atenção para executar os endpoints:
+Agora você precisa seguir com a atenção para executar os endpoints:
 
-. Listar todos os deputados
+> Listar deputados
 
 **GET: localhost:8000/listar-deputados**
 
@@ -185,58 +185,8 @@ Você precisa seguir com a atenção para executar os endpoints:
     ]
 }
 ```
-. Buscar determinado deputado
 
-**GET: localhost:8000/buscar-deputado?nome=**
-- Você precisa alterar **nome=** para **nome=Tiririca**.
-
-```
-// Response - Status: 200 OK
-{
-    "data": [
-        {
-            "id": 484,
-            "camara_id": 160976,
-            "nome": "Tiririca",
-            "partido": "PL",
-            "uf": "SP"
-        }
-    ]
-}
-```
-
-. Listar todos as despesas
-
-**GET: localhost:8000/listar-despesas**
-
-```
-// Response - Status: 200 OK
-{
-    "data": [
-        {
-            "id": 1,
-            "deputado_id": "Acácio Favacho",
-            "tipo_despesa": "MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR",
-            "valor": "750.00",
-            "fornecedor": "AMORETTO CAFES EXPRESSO LTDA",
-            "url_documento": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/3308/2025/7864352.pdf",
-            "data_documento": null
-        },
-        ...
-        {
-            "id": 97949,
-            "deputado_id": "Zucco",
-            "tipo_despesa": "PASSAGEM AÉREA - SIGEPA",
-            "valor": "3126.02",
-            "fornecedor": "TAM",
-            "url_documento": null,
-            "data_documento": null
-        }
-    ]
-}
-```
-
-. Listar despesas por determinado deputado
+> Listar despesas de determinado deputado
 
 **GET: localhost:8000/buscar-despesas-deputado?nome=**
 - Você precisa alterar **nome=** para **nome=Tiririca**.
