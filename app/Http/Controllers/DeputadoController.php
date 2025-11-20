@@ -36,7 +36,7 @@ class DeputadoController extends Controller
             return response()->json(['message' => "O nome do(a) deputado(a) está vazio."], 404);
         }
         $despesas_deputados = Despesa::whereHas('deputados', function ($query) use ($nome) {
-            $query->where('nome', 'ILIKE', '%' . $nome . '%');
+            $query->where('nome', 'LIKE', '%' . $nome . '%');
         })->with('deputados')->get();
         if ($despesas_deputados->isEmpty()) {
             return response()->json(['message' => "Deputado(a) $nome não foi encontrado(a) para verificar as despesas."], 404);

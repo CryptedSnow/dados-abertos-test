@@ -1,7 +1,7 @@
 services:
     app:
         build:
-            context: .
+            context: ./docker/8.4
             dockerfile: Dockerfile
         container_name: dados-abertos-test-app
         extra_hosts:
@@ -12,7 +12,7 @@ services:
         volumes:
             - '.:/var/www/html'
         depends_on:
-            - pgsql
+            - mysql
         networks:
             - app-network
     nginx:
@@ -27,33 +27,37 @@ services:
             - app
         networks:
             - app-network
-    pgsql:
-        image: 'postgres:latest'
-        container_name: pgsql
+    mysql:
+        image: mysql:8.0
+        container_name: mysql
         ports:
-            - '5432:5432'
+            - '3306:3306'
         environment:
-            POSTGRES_DB: dados-abertos-test
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_DATABASE: dados-abertos-test
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
         volumes:
-            - 'pgsql-data:/var/lib/postgresql/data'
+            - 'mysql-data:/var/lib/mysql'
         networks:
             - app-network
-    pgadmin:
-        image: dpage/pgadmin4
-        container_name: pgadmin
-        environment:
-            PGADMIN_DEFAULT_EMAIL: admin@admin.com
-            PGADMIN_DEFAULT_PASSWORD: admin
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
         ports:
-            - '5050:80'
+            - '8081:80'
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: user
+            PMA_PASSWORD: password
         depends_on:
-            - pgsql
+            - mysql
         networks:
             - app-network
 networks:
     app-network:
         driver: bridge
 volumes:
-    pgsql-data: null
+    mysql-data: null
