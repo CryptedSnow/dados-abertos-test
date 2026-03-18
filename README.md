@@ -94,7 +94,7 @@ docker compose exec app php artisan queue:work
 03 - Insira o endereço abaixo no navegador ou alguma API Plataform para iniciar o processo de inserção de dados:
 
 ```
-http://localhost:8000/iniciar-importacao
+http://localhost:8000/api/iniciar-importacao
 ```
 
 04 - Com isso você pode ver a seguinte mensagem:
@@ -131,7 +131,7 @@ Agora você precisa seguir com a atenção para executar os endpoints:
 
 > Listar deputados
 
-**GET: localhost:8000/listar-deputados**
+**GET: localhost:8000/api/listar-deputados**
 
 ```
 // Response - Status: 200 OK
@@ -158,7 +158,7 @@ Agora você precisa seguir com a atenção para executar os endpoints:
 
 > Listar despesas de determinado deputado
 
-**GET: localhost:8000/buscar-despesas-deputado?nome=**
+**GET: localhost:8000/api/buscar-despesas-deputado?nome=**
 - Você precisa alterar **nome=** para **nome=Tiririca**.
 
 ```
