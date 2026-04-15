@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
 use App\Models\{Deputado, Despesa};
 use App\Http\Resources\{DeputadoResource, DespesaResource};
 use App\Jobs\DeputadoJobs;
@@ -18,7 +19,7 @@ class DeputadoController extends Controller
 
     public function listarDeputados()
     {
-        $deputados = Deputado::orderby('id')->get();
+        $deputados = Deputado::orderby('id')->paginate(10);
         if ($deputados->isEmpty()) {
             return response()->json(['message' => 'Deputados não encontrados.'], 404);
         }
@@ -31,13 +32,13 @@ class DeputadoController extends Controller
         if (!$nome) {
             return response()->json(['message' => "O nome do(a) deputado(a) está vazio."], 404);
         }
-        $despesas_deputados = Despesa::whereHas('deputados', function ($query) use ($nome) {
+        $despesasDeputados = Despesa::whereHas('deputados', function ($query) use ($nome) {
             $query->where('nome', 'LIKE', '%' . $nome . '%');
-        })->with('deputados')->get();
-        if ($despesas_deputados->isEmpty()) {
+        })->with('deputados')->paginate(10);
+        if ($despesasDeputados->isEmpty()) {
             return response()->json(['message' => "Não foram encontradas despesas do(a) deputado(a) $nome."], 404);
         }
-        return DespesaResource::collection($despesas_deputados);
+        return DespesaResource::collection($despesasDeputados);
     }
 
 }

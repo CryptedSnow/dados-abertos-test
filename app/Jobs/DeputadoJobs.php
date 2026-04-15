@@ -4,11 +4,9 @@ namespace App\Jobs;
 
 use App\Models\Deputado;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\{Http, Log};
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\{InteractsWithQueue, SerializesModels};
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Jobs\DespesasDeputadoJobs;
 
@@ -29,24 +27,23 @@ class DeputadoJobs implements ShouldQueue
             $dados = $response->json();
             $deputados = $dados['dados'] ?? [];
 
-            foreach ($deputados as $d) {
+            foreach ($deputados as $key) {
                 $deputado = Deputado::updateOrCreate(
-                    ['camara_id' => $d['id']],
+                    ['camara_id' => $key['id']],
                     [
-                        'nome' => $d['nome'],
-                        'partido' => $d['siglaPartido'],
-                        'uf' => $d['siglaUf'],
+                        'nome' => $key['nome'],
+                        'partido' => $key['siglaPartido'],
+                        'uf' => $key['siglaUf'],
                     ]
                 );
 
                 Log::info("Deputado salvo: {$deputado->nome}");
 
-                // Dispatch the despesas job with only the ID
                 DespesasDeputadoJobs::dispatch($deputado->id);
             }
 
             $pagina++;
-            $temProxima = collect($dados['links'] ?? [])->firstWhere('rel', 'next');
-        } while ($temProxima);
+            $proximaPagina = collect($dados['links'] ?? [])->firstWhere('rel', 'next');
+        } while ($proximaPagina);
     }
 }

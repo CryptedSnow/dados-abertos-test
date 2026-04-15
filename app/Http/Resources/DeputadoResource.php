@@ -15,11 +15,11 @@ class DeputadoResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'         => $this->id,
-            'camara_id'  => $this->camara_id,
-            'nome'       => $this->nome,
-            'partido'    => $this->partido,
-            'uf'         => $this->uf,
+            'id' => $this->id,
+            'camara_id' => $this->camara_id,
+            'nome' => $this->nome,
+            'partido' => $this->partido,
+            'uf' => $this->uf,
         ];
     }
 }

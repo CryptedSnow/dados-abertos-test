@@ -2,14 +2,11 @@
 
 namespace App\Jobs;
 
-use App\Models\Despesa;
-use App\Models\Deputado;
+use App\Models\{Despesa, Deputado};
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\{Http, Log};
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\{InteractsWithQueue, SerializesModels};
 use Illuminate\Foundation\Bus\Dispatchable;
 
 class DespesasDeputadoJobs implements ShouldQueue
@@ -46,26 +43,26 @@ class DespesasDeputadoJobs implements ShouldQueue
 
             Log::info("Página {$pagina}: {$deputado->nome} tem " . count($despesas) . " despesas.");
 
-            foreach ($despesas as $d) {
+            foreach ($despesas as $key) {
                 try {
                     Despesa::create([
                         'deputado_id' => $deputado->id,
-                        'tipo_despesa' => $d['tipoDespesa'] ?? '',
-                        'valor' => $d['valorDocumento'] ?? 0,
-                        'fornecedor' => $d['nomeFornecedor'] ?? '',
-                        'data_documento' => $d['dataDocumento'] ?? null,
-                        'url_documento' => $d['urlDocumento'] ?? null,
+                        'tipo_despesa' => $key['tipoDespesa'] ?? '',
+                        'valor' => $key['valorDocumento'] ?? 0,
+                        'fornecedor' => $key['nomeFornecedor'] ?? '',
+                        'data_documento' => $key['dataDocumento'] ?? null,
+                        'url_documento' => $key['urlDocumento'] ?? null,
                     ]);
                 } catch (\Exception $e) {
                     Log::error('Erro ao salvar despesa', [
                         'mensagem' => $e->getMessage(),
-                        'dados' => $d,
+                        'dados' => $key,
                     ]);
                 }
             }
 
             $pagina++;
-            $temProxima = collect($dados['links'] ?? [])->firstWhere('rel', 'next');
-        } while ($temProxima);
+            $proximaPagina = collect($dados['links'] ?? [])->firstWhere('rel', 'next');
+        } while ($proximaPagina);
     }
 }

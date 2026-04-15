@@ -136,23 +136,170 @@ Agora você precisa seguir com a atenção para executar os endpoints:
 ```
 // Response - Status: 200 OK
 {
-    "data": [
-        {
-            "id": 1,
-            "camara_id": 204379,
-            "nome": "Acácio Favacho",
-            "partido": "MDB",
-            "uf": "AP"
-        },
-        ...
-        {
-            "id": 511,
-            "camara_id": 220552,
-            "nome": "Zucco",
-            "partido": "PL",
-            "uf": "RS"
-        }
-    ]
+  "data": [
+    {
+      "id": 1,
+      "camara_id": 204379,
+      "nome": "Acácio Favacho",
+      "partido": "MDB",
+      "uf": "AP"
+    },
+    {
+      "id": 2,
+      "camara_id": 220714,
+      "nome": "Adail Filho",
+      "partido": "MDB",
+      "uf": "AM"
+    },
+    {
+      "id": 3,
+      "camara_id": 221328,
+      "nome": "Adilson Barroso",
+      "partido": "PL",
+      "uf": "SP"
+    },
+    {
+      "id": 4,
+      "camara_id": 204560,
+      "nome": "Adolfo Viana",
+      "partido": "PSDB",
+      "uf": "BA"
+    },
+    {
+      "id": 5,
+      "camara_id": 204528,
+      "nome": "Adriana Ventura",
+      "partido": "NOVO",
+      "uf": "SP"
+    },
+    {
+      "id": 6,
+      "camara_id": 121948,
+      "nome": "Adriano do Baldy",
+      "partido": "PP",
+      "uf": "GO"
+    },
+    {
+      "id": 7,
+      "camara_id": 74646,
+      "nome": "Aécio Neves",
+      "partido": "PSDB",
+      "uf": "MG"
+    },
+    {
+      "id": 8,
+      "camara_id": 160508,
+      "nome": "Afonso Florence",
+      "partido": "PT",
+      "uf": "BA"
+    },
+    {
+      "id": 9,
+      "camara_id": 136811,
+      "nome": "Afonso Hamm",
+      "partido": "PP",
+      "uf": "RS"
+    },
+    {
+      "id": 10,
+      "camara_id": 178835,
+      "nome": "Afonso Motta",
+      "partido": "PDT",
+      "uf": "RS"
+    }
+  ],
+  "links": {
+    "first": "http://localhost:8000/api/listar-deputados?page=1",
+    "last": "http://localhost:8000/api/listar-deputados?page=52",
+    "prev": null,
+    "next": "http://localhost:8000/api/listar-deputados?page=2"
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 52,
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=2",
+        "label": "2",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=3",
+        "label": "3",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=4",
+        "label": "4",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=5",
+        "label": "5",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=6",
+        "label": "6",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=7",
+        "label": "7",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=8",
+        "label": "8",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=9",
+        "label": "9",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=10",
+        "label": "10",
+        "active": false
+      },
+      {
+        "url": null,
+        "label": "...",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=51",
+        "label": "51",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=52",
+        "label": "52",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/listar-deputados?page=2",
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "path": "http://localhost:8000/api/listar-deputados",
+    "per_page": 10,
+    "to": 10,
+    "total": 513
+  }
 }
 ```
 
@@ -164,26 +311,154 @@ Agora você precisa seguir com a atenção para executar os endpoints:
 ```
 // Response - Status: 200 OK
 {
-    "data": [
-        {
-            "id": 92967,
-            "deputado_id": "Tiririca",
-            "tipo_despesa": "PASSAGEM AÉREA - SIGEPA",
-            "valor": "1353.53",
-            "fornecedor": "TAM",
-            "url_documento": null,
-            "data_documento": null
-        },
-        ...
-        {
-            "id": 92957,
-            "deputado_id": "Tiririca",
-            "tipo_despesa": "HOSPEDAGEM ,EXCETO DO PARLAMENTAR NO DISTRITO FEDERAL.",
-            "valor": "1505.18",
-            "fornecedor": "HOTELARIA ACCOR BRASIL S/A",
-            "url_documento": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/2395/2025/7948484.pdf",
-            "data_documento": null
-        }
-    ]
+  "data": [
+    {
+      "id": 74373,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "PASSAGEM AÉREA - SIGEPA",
+      "valor": "2165.21",
+      "fornecedor": "Gol Linhas Aéreas",
+      "url_documento": null,
+      "data_documento": null
+    },
+    {
+      "id": 74376,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "PASSAGEM AÉREA - SIGEPA",
+      "valor": "2066.28",
+      "fornecedor": "LATAM Airlines Brasil",
+      "url_documento": null,
+      "data_documento": null
+    },
+    {
+      "id": 74362,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "COMBUSTÍVEIS E LUBRIFICANTES.",
+      "valor": "231.60",
+      "fornecedor": "BELIZE COMPANY AUTO POSTO LTDA",
+      "url_documento": "http://www.camara.leg.br/cota-parlamentar/nota-fiscal-eletronica?ideDocumentoFiscal=8001992",
+      "data_documento": null
+    },
+    {
+      "id": 74370,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES",
+      "valor": "6500.00",
+      "fornecedor": "SUPREMA MOBILIDADE LTDA",
+      "url_documento": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/2395/2025/8007583.pdf",
+      "data_documento": null
+    },
+    {
+      "id": 74360,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "COMBUSTÍVEIS E LUBRIFICANTES.",
+      "valor": "387.38",
+      "fornecedor": "AUTO SERVICOS ROCAR LT",
+      "url_documento": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/2395/2025/8019933.pdf",
+      "data_documento": null
+    },
+    {
+      "id": 74364,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR.",
+      "valor": "19000.00",
+      "fornecedor": "Strike Media",
+      "url_documento": "https://www.camara.leg.br/cota-parlamentar/documentos/publ/2395/2025/8009764.pdf",
+      "data_documento": null
+    },
+    {
+      "id": 74367,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "TELEFONIA",
+      "valor": "636.44",
+      "fornecedor": "Claro NXT Telecomunicações S.A",
+      "url_documento": null,
+      "data_documento": null
+    },
+    {
+      "id": 74377,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "PASSAGEM AÉREA - SIGEPA",
+      "valor": "1241.26",
+      "fornecedor": "LATAM Airlines Brasil",
+      "url_documento": null,
+      "data_documento": null
+    },
+    {
+      "id": 74378,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "PASSAGEM AÉREA - SIGEPA",
+      "valor": "3035.75",
+      "fornecedor": "LATAM Airlines Brasil",
+      "url_documento": null,
+      "data_documento": null
+    },
+    {
+      "id": 74379,
+      "deputado_id": "Tiririca",
+      "tipo_despesa": "PASSAGEM AÉREA - SIGEPA",
+      "valor": "2164.58",
+      "fornecedor": "LATAM Airlines Brasil",
+      "url_documento": null,
+      "data_documento": null
+    }
+  ],
+  "links": {
+    "first": "http://localhost:8000/api/buscar-despesas-deputado?page=1",
+    "last": "http://localhost:8000/api/buscar-despesas-deputado?page=6",
+    "prev": null,
+    "next": "http://localhost:8000/api/buscar-despesas-deputado?page=2"
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 6,
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/buscar-despesas-deputado?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": "http://localhost:8000/api/buscar-despesas-deputado?page=2",
+        "label": "2",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/buscar-despesas-deputado?page=3",
+        "label": "3",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/buscar-despesas-deputado?page=4",
+        "label": "4",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/buscar-despesas-deputado?page=5",
+        "label": "5",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/buscar-despesas-deputado?page=6",
+        "label": "6",
+        "active": false
+      },
+      {
+        "url": "http://localhost:8000/api/buscar-despesas-deputado?page=2",
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "path": "http://localhost:8000/api/buscar-despesas-deputado",
+    "per_page": 10,
+    "to": 10,
+    "total": 56
+  }
 }
 ```
