@@ -5,9 +5,15 @@ namespace App\Repositories\Eloquent;
 use App\Models\{Deputado, Despesa};
 use App\Repositories\Contracts\DeputadoRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Jobs\DeputadoJobs;
 
 class DeputadoRepository implements DeputadoRepositoryInterface
 {
+    public function importarDeputados(): void
+    {
+        DeputadoJobs::dispatch();
+    }
+
     public function getAllPaginated(int $perPage = 10): LengthAwarePaginator
     {
         return Deputado::paginate($perPage);

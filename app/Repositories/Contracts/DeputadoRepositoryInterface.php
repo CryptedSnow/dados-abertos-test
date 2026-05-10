@@ -6,6 +6,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface DeputadoRepositoryInterface
 {
+    public function importarDeputados(): void;
     public function getAllPaginated(int $perPage = 10): LengthAwarePaginator;
     public function searchCustosDeputados(string $name, int $perPage = 10): LengthAwarePaginator;
 }

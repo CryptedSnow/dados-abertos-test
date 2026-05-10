@@ -8,22 +8,23 @@ use App\Http\Resources\{DeputadoResource, DespesaResource};
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Repositories\Contracts\DeputadoRepositoryInterface;
 use Symfony\Component\HttpFoundation\Response;
-use App\Jobs\DeputadoJobs;
 
 class DeputadoController extends Controller
 {
-    public function __construct(protected DeputadoRepositoryInterface $deputadoRepository) {}
+    public function __construct(protected DeputadoRepositoryInterface $deputadoRepositoryInterface) {}
 
     public function iniciarImportacao()
     {
-        DeputadoJobs::dispatch();
+        $this->deputadoRepositoryInterface->importarDeputados();
 
-        return response()->json(['DeputadoJobs está sendo executado, verifique o arquivo laravel.log para visualizar o status.'], 202, [], JSON_UNESCAPED_UNICODE);
+        return response()->json([
+            'message' => 'DeputadoJobs está sendo executado, verifique o arquivo laravel.log para visualizar o status.',
+        ], 202, [], JSON_UNESCAPED_UNICODE);
     }
 
     public function listarDeputados(): AnonymousResourceCollection | JsonResponse
     {
-        $deputados = $this->deputadoRepository->getAllPaginated(10);
+        $deputados = $this->deputadoRepositoryInterface->getAllPaginated(10);
 
         if ($deputados->isEmpty()) {
             return response()->json([
@@ -41,10 +42,10 @@ class DeputadoController extends Controller
         if (!$nomeDeputado) {
             return response()->json([
                 'message' => 'O nome do(a) deputado(a) está vazio.'
-            ], Response::HTTP_BAD_REQUEST);
+            ], Response::HTTP_NOT_FOUND);
         }
 
-        $despesasDeputados = $this->deputadoRepository->searchCustosDeputados($nomeDeputado);
+        $despesasDeputados = $this->deputadoRepositoryInterface->searchCustosDeputados($nomeDeputado);
 
         if ($despesasDeputados->isEmpty()) {
             return response()->json([

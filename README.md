@@ -1,11 +1,5 @@
 ## Instruções
 
-Antes de executar os containers, você pode escolher a versão do ```PHP``` de sua preferência (```8.0```,```8.1```,```8.2```,```8.3```,```8.4```). No arquivo ```docker-compose.yml``` em ```context```  escolha a versão:
-```
-// Examplo: Mudar version para 8.0
-context: ./docker/version 
-```
-
 1 - Ative os containers do Docker:
 ```
 docker-compose up -d
@@ -84,9 +78,7 @@ docker compose exec app php artisan queue:work
 
 03 - Insira o endereço abaixo no navegador ou alguma API Plataform para iniciar o processo de inserção de dados:
 
-```
-http://localhost:8000/api/iniciar-importacao
-```
+**GET: localhost:8000/api/iniciar-importacao**
 
 04 - Com isso você pode ver a seguinte mensagem:
 
