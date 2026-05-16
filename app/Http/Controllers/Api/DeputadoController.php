@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\{JsonResponse, Request};
 use App\Http\Controllers\Controller;
 use App\Http\Resources\{DeputadoResource, DespesaResource};
+use App\Repositories\Interfaces\DeputadoInterface;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use App\Repositories\Contracts\DeputadoRepositoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class DeputadoController extends Controller
 {
-    public function __construct(protected DeputadoRepositoryInterface $deputadoRepositoryInterface) {}
+    public function __construct(private DeputadoInterface $deputadoInterface) {}
 
     public function iniciarImportacao()
     {
-        $this->deputadoRepositoryInterface->importarDeputados();
+        $this->deputadoInterface->importarDeputados();
 
         return response()->json([
             'message' => 'DeputadoJobs está sendo executado, verifique o arquivo laravel.log para visualizar o status.',
@@ -24,12 +24,12 @@ class DeputadoController extends Controller
 
     public function listarDeputados(): AnonymousResourceCollection | JsonResponse
     {
-        $deputados = $this->deputadoRepositoryInterface->getAllPaginated(10);
+        $deputados = $this->deputadoInterface->listarDeputados(10);
 
         if ($deputados->isEmpty()) {
             return response()->json([
                 'message' => 'Deputados não encontrados.'
-            ], Response::HTTP_NOT_FOUND);
+            ], Response::HTTP_NOT_FOUND, [], JSON_UNESCAPED_UNICODE);
         }
 
         return DeputadoResource::collection($deputados);
@@ -42,15 +42,15 @@ class DeputadoController extends Controller
         if (!$nomeDeputado) {
             return response()->json([
                 'message' => 'O nome do(a) deputado(a) está vazio.'
-            ], Response::HTTP_NOT_FOUND);
+            ], Response::HTTP_NOT_FOUND, [], JSON_UNESCAPED_UNICODE);
         }
 
-        $despesasDeputados = $this->deputadoRepositoryInterface->searchCustosDeputados($nomeDeputado);
+        $despesasDeputados = $this->deputadoInterface->buscarCustosDeputados($nomeDeputado);
 
         if ($despesasDeputados->isEmpty()) {
             return response()->json([
                 'message' => "Não foram encontradas despesas do(a) deputado(a) {$nomeDeputado}."
-            ], Response::HTTP_NOT_FOUND);
+            ], Response::HTTP_NOT_FOUND, [], JSON_UNESCAPED_UNICODE);
         }
 
         return DespesaResource::collection($despesasDeputados);

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\Contracts\DeputadoRepositoryInterface;
-use App\Repositories\Eloquent\DeputadoRepository;
+use App\Repositories\Interfaces\DeputadoInterface;
+use App\Repositories\Services\DeputadoService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,8 +14,8 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            DeputadoRepositoryInterface::class,
-            DeputadoRepository::class
+            DeputadoInterface::class,
+            DeputadoService::class
         );
     }
 

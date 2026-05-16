@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Repositories\Services;
 
-use App\Models\{Deputado, Despesa};
-use App\Repositories\Contracts\DeputadoRepositoryInterface;
+use App\Repositories\Interfaces\DeputadoInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Models\{Deputado, Despesa};
 use App\Jobs\DeputadoJobs;
 
-class DeputadoRepository implements DeputadoRepositoryInterface
+class DeputadoService implements DeputadoInterface
 {
     public function importarDeputados(): void
     {
         DeputadoJobs::dispatch();
     }
 
-    public function getAllPaginated(int $perPage = 10): LengthAwarePaginator
+    public function listarDeputados(int $perPage = 10): LengthAwarePaginator
     {
         return Deputado::paginate($perPage);
     }
 
-    public function searchCustosDeputados(string $name, int $perPage = 10): LengthAwarePaginator
+    public function buscarCustosDeputados(string $name, int $perPage = 10): LengthAwarePaginator
     {
         return Despesa::whereHas('deputados', function ($query) use ($name) {
             $query->where('nome', 'LIKE', "%{$name}%");
