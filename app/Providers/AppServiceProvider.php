@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\Interfaces\DeputadoInterface;
-use App\Repositories\Services\DeputadoService;
+use App\Interfaces\DeputadoInterface;
+use App\Services\DeputadoService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

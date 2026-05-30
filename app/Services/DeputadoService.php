@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Services;
+namespace App\Services;
 
-use App\Repositories\Interfaces\DeputadoInterface;
+use App\Interfaces\DeputadoInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\{Deputado, Despesa};
 use App\Jobs\DeputadoJobs;

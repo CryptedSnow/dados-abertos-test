@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\{JsonResponse, Request};
+use App\Interfaces\DeputadoInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\{DeputadoResource, DespesaResource};
-use App\Repositories\Interfaces\DeputadoInterface;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Symfony\Component\HttpFoundation\Response;
 
