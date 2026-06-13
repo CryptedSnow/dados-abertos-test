@@ -1,6 +1,6 @@
 ## Instruções
 
-1 - Ative os containers do Docker:
+1 - Ative os containers do ```Docker```:
 ```
 docker-compose up -d
 ```
@@ -66,15 +66,21 @@ http://localhost:8081
 
 ## Execução dos Jobs
 
-01 - Execute o comando para executar as Jobs da aplicação:
+01 - Execute o comando para executar as ```Jobs``` da aplicação:
 
 ```
 docker compose exec app php artisan queue:work
 ```
 
-02 - Agora o processo de Jobs está em andamento, sendo possível realizar a inserção de dados no MySQL de registros da API online chamada [Dados Abertos](https://dadosabertos.camara.leg.br/swagger/api.html).
+02 - Agora o processo de ```Jobs``` está em andamento, sendo possível realizar a inserção de dados no MySQL de registros da API online chamada [Dados Abertos](https://dadosabertos.camara.leg.br/swagger/api.html).
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/07.png)
+
+Caso queira executar os três endpoints **GET** no ```Swagger``` ao invés de usar alguma API plataform, basta acessar:
+
+```
+http://localhost:8000/api/documentation
+```
 
 03 - Insira o endereço abaixo no navegador ou alguma API Plataform para iniciar o processo de inserção de dados:
 
@@ -84,7 +90,7 @@ docker compose exec app php artisan queue:work
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/08.png)
 
-05 - Agora você pode ver que está sendo executada a Jobs pelo terminal.
+05 - Agora você pode ver que está sendo executada a ```Jobs``` pelo terminal.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/09.png)
 

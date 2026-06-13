@@ -1,0 +1,89 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dados Abertos API",
+        "description": "API REST para importação e consulta de deputados e despesas",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api",
+            "description": "Servidor local (Docker)"
+        }
+    ],
+    "paths": {
+        "/iniciar-importacao": {
+            "get": {
+                "tags": [
+                    "Jobs"
+                ],
+                "summary": "Iniciar importação de deputados",
+                "operationId": "c0fdc3373f195627901058506087a744",
+                "responses": {
+                    "202": {
+                        "description": "Importação iniciada com sucesso"
+                    }
+                }
+            }
+        },
+        "/listar-deputados": {
+            "get": {
+                "tags": [
+                    "Deputados"
+                ],
+                "summary": "Listar todos os deputados",
+                "operationId": "15442c46bce3598b69bb1a108de7668e",
+                "responses": {
+                    "200": {
+                        "description": "Lista retornada com sucesso"
+                    },
+                    "404": {
+                        "description": "Nenhum deputado encontrado"
+                    }
+                }
+            }
+        },
+        "/buscar-despesas-deputado": {
+            "get": {
+                "tags": [
+                    "Despesas"
+                ],
+                "summary": "Buscar despesas de um deputado pelo nome",
+                "operationId": "4f4d84276486ea967f6c868462ef511b",
+                "parameters": [
+                    {
+                        "name": "nome",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Tiririca"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Despesas encontradas"
+                    },
+                    "404": {
+                        "description": "Nenhuma despesa encontrada"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Jobs",
+            "description": "Jobs"
+        },
+        {
+            "name": "Deputados",
+            "description": "Deputados"
+        },
+        {
+            "name": "Despesas",
+            "description": "Despesas"
+        }
+    ]
+}
