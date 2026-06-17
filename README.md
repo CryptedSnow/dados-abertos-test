@@ -1,26 +1,26 @@
 ## Instruções
 
-1 - Ative os containers do ```Docker```:
+01 - Ative os containers do ```Docker```:
 ```
 docker-compose up -d
 ```
 
-2 - Execute o ```composer install``` para criar a pasta ```vendor```:
+02 - Execute o ```composer install``` para criar a pasta ```vendor```:
 ```
 docker-compose exec app composer install
 ```
 
-3 - Crie o arquivo ```.env```:
+03 - Crie o arquivo ```.env```:
 ```
 docker-compose exec app cp .env.example .env  
 ```
 
-4 - Crie a chave criptografada (Vai preencher o ```APP_KEY=``` do arquivo ```.env``` de forma automática):
+04 - Crie a chave criptografada (Vai preencher o ```APP_KEY=``` do arquivo ```.env``` de forma automática):
 ```
 docker-compose exec app php artisan key:generate
 ```
 
-5 - No arquivo ```.env```, configure o seguinte trecho para se conectar a aplicação ao container do MySQL que se encontra no Docker:
+05 - No arquivo ```.env```, configure o seguinte trecho para se conectar a aplicação ao container do MySQL que se encontra no Docker:
 ```
 DB_CONNECTION=mysql
 DB_HOST=mysql
@@ -30,41 +30,41 @@ DB_USERNAME=user
 DB_PASSWORD=password
 ```
 
-6 - Execute as ```migration``` para criar o banco de dados e suas tabelas: 
+06 - Execute as ```migration``` para criar o banco de dados e suas tabelas: 
 ```
 docker-compose exec app php artisan migrate
 ```
 
-7 - Para usar o ```phpMyAdmin``` do Docker, você pode acessar:
+07 - Para usar o ```phpMyAdmin``` do Docker, você pode acessar:
 ```
 http://localhost:8081
 ```
 
-9 - O dashboard estará disponível:
+08 - O dashboard estará disponível:
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/01.png)
 
-10 - Verifique o banco de dados criado ```dados-abertos-test```.
+09 - Verifique o banco de dados criado ```dados-abertos-test```.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/02.png)
 
-11 - Verifique a tabela ```deputados```:
+10 - Verifique a tabela ```deputados```:
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/03.png)
 
-12 - A tabela ```deputados```está vazia.
+11 - A tabela ```deputados```está vazia.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/04.png)
 
-13 - Verifique a tabela ```despesas```.
+12 - Verifique a tabela ```despesas```.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/05.png)
 
-14 - A tabela ```despesas```está vazia.
+13 - A tabela ```despesas```está vazia.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/06.png)
 
-## Execução dos Jobs
+## Execução das Jobs
 
 01 - Execute o comando para executar as ```Jobs``` da aplicação:
 
@@ -76,21 +76,20 @@ docker compose exec app php artisan queue:work
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/07.png)
 
-03. Para acessar o ```Swagger``` basta acessar:
+03 - Para acessar o ```Swagger``` basta acessar:
 
 ```
 http://localhost:8000/api/documentation
 ```
 
-Você vai ver a seguinte página:
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/08.png)
 
-04 - Para iniciar a importação de dados pelo ```Jobs``` execute ```-> /iniciar-importacao -> Try it out -> Execute```:
+04 - Para iniciar a importação de dados pelo ```Jobs``` execute ```/iniciar-importacao -> Try it out -> Execute```:
 
-Você vai ver a seguinte página:
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/09.png)
 
-05 - A seguinte mensagem vai ser exibida:
+05 - A seguinte mensagem no ```Response Body``` vai ser exibida:
+
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/10.png)
 
 06 - Agora você pode ver que está sendo executada a ```Jobs``` pelo terminal.
@@ -118,7 +117,7 @@ Você vai ver a seguinte página:
 > Listar deputados
 
 **GET: localhost:8000/api/listar-deputados**
-- Response: 200 OK
+- Response: ```200 OK```
 
 ```
 {
@@ -293,7 +292,7 @@ Você vai ver a seguinte página:
 
 **GET: localhost:8000/api/buscar-despesas-deputado?nome=**
 - Você precisa alterar **nome=** para **nome=Tiririca**.
-- Response: 200 OK
+- Response: ```200 OK```
 
 ```
 {
