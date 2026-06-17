@@ -33,6 +33,18 @@
                 ],
                 "summary": "Listar todos os deputados",
                 "operationId": "15442c46bce3598b69bb1a108de7668e",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Lista retornada com sucesso"
@@ -56,8 +68,17 @@
                         "in": "query",
                         "required": true,
                         "schema": {
-                            "type": "string",
-                            "example": "Tiririca"
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
                         }
                     }
                 ],

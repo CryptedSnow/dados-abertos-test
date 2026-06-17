@@ -76,54 +76,51 @@ docker compose exec app php artisan queue:work
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/07.png)
 
-Caso queira executar os três endpoints **GET** no ```Swagger``` ao invés de usar alguma API plataform, basta acessar:
+03. Para acessar o ```Swagger``` basta acessar:
 
 ```
 http://localhost:8000/api/documentation
 ```
 
-03 - Insira o endereço abaixo no navegador ou alguma API Plataform para iniciar o processo de inserção de dados:
-
-**GET: localhost:8000/api/iniciar-importacao**
-
-04 - Com isso você pode ver a seguinte mensagem:
-
+Você vai ver a seguinte página:
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/08.png)
 
-05 - Agora você pode ver que está sendo executada a ```Jobs``` pelo terminal.
+04 - Para iniciar a importação de dados pelo ```Jobs``` execute ```-> /iniciar-importacao -> Try it out -> Execute```:
 
+Você vai ver a seguinte página:
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/09.png)
 
-06 - No arquivo ```laravel.log``` você vai notar a inserção dos deputados na tabela ```deputados``` e as despesas feitas na tabela ```despesas```.
-
+05 - A seguinte mensagem vai ser exibida:
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/10.png)
 
-07 - O processo pode demorar, aguarde até finalizar.
+06 - Agora você pode ver que está sendo executada a ```Jobs``` pelo terminal.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/11.png)
 
-08 - Perceba que a tabela ```deputados``` agora tem registros.
+07 - No arquivo ```laravel.log``` você vai notar a inserção dos deputados na tabela ```deputados``` e as despesas feitas na tabela ```despesas```.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/12.png)
 
-09 - E a tabela ```despesas``` também há registros.
+08 - O processo pode demorar, aguarde até finalizar.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/13.png)
 
-## Execução de REST API
-
-Se você tem seguido as instruções acima, você precisa de alguma API Plataform para executar os endpoints, você pode usar o [POSTMAN](https://www.postman.com/) por exemplo. É necessário instalar o Postman em sua máquina local para testes locais.
+09 - Perceba que a tabela ```deputados``` agora tem registros.
 
 ![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/14.png)
 
-Agora você precisa seguir com a atenção para executar os endpoints:
+10 - E a tabela ```despesas``` também há registros.
+
+![](https://raw.githubusercontent.com/CryptedSnow/dados-abertos-test/refs/heads/main/public/img/15.png)
+
+## API's Rest
 
 > Listar deputados
 
 **GET: localhost:8000/api/listar-deputados**
+- Response: 200 OK
 
 ```
-// Response - Status: 200 OK
 {
   "data": [
     {
@@ -296,9 +293,9 @@ Agora você precisa seguir com a atenção para executar os endpoints:
 
 **GET: localhost:8000/api/buscar-despesas-deputado?nome=**
 - Você precisa alterar **nome=** para **nome=Tiririca**.
+- Response: 200 OK
 
 ```
-// Response - Status: 200 OK
 {
   "data": [
     {

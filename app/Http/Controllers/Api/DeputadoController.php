@@ -35,6 +35,15 @@ class DeputadoController extends Controller
         path: '/listar-deputados',
         summary: 'Listar todos os deputados',
         tags: ['Deputados'],
+        parameters: [
+            new OA\Parameter(
+                name: 'page',
+                in: 'query',
+                required: false,
+                description: 'Page number',
+                schema: new OA\Schema(type: 'integer', example: 1)
+            ),
+        ],
         responses: [
             new OA\Response(response: 200, description: 'Lista retornada com sucesso'),
             new OA\Response(response: 404, description: 'Nenhum deputado encontrado'),
@@ -58,7 +67,19 @@ class DeputadoController extends Controller
         summary: 'Buscar despesas de um deputado pelo nome',
         tags: ['Despesas'],
         parameters: [
-            new OA\Parameter(name: 'nome', in: 'query', required: true, schema: new OA\Schema(type: 'string', example: 'Tiririca')),
+            new OA\Parameter(
+                name: 'nome',
+                in: 'query',
+                required: true,
+                schema: new OA\Schema(type: 'string')
+            ),
+            new OA\Parameter(
+                name: 'page',
+                in: 'query',
+                required: false,
+                description: 'Page number',
+                schema: new OA\Schema(type: 'integer', example: 1)
+            ),
         ],
         responses: [
             new OA\Response(response: 200, description: 'Despesas encontradas'),
